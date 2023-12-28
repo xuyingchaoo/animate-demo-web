@@ -2,11 +2,11 @@
  * @Author: xuyingchao
  * @Date: 2023-12-26 15:42:31
  * @LastEditors: xuyingchao
- * @LastEditTime: 2023-12-27 09:53:05
+ * @LastEditTime: 2023-12-28 11:10:55
  * @Descripttion: 
 -->
 <script setup lang="ts">
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 const dom = document.getElementsByClassName('row')
@@ -14,53 +14,51 @@ const tl = gsap.timeline()
 const tween = ref()
 // 停止
 function handleStop() {
-    tl.kill()
-    tween.value = gsap.to(dom[index.value - 1], {
-        y: -80
-    })
+  tl.kill()
+  tween.value = gsap.to(dom[index.value - 1], {
+    y: -80
+  })
 }
 // 开始
 function handleStart() {
-    index.value = 1
-    tween.value.revert()
-    tl.revert()
-    tl.restart()
+  index.value = 1
+  tween.value.revert()
+  tl.revert()
+  tl.restart()
 }
 const index = ref(1)
 onMounted(() => {
-    tl.to(dom, {
-        keyframes: [
-            { y: -160, duration: 0.1 },
-            { 
-                y: 0, 
-                duration: 0,  
-                onComplete: () => { 
-                    if(index.value >=100){
-                        index.value = 1
-                    }
-                    index.value++
-                } 
-            }
-        ],
-        repeat: -1,
-        stagger: 0.5,
-    })
-
-
+  tl.to(dom, {
+    keyframes: [
+      { y: -160, duration: 0.1 },
+      {
+        y: 0,
+        duration: 0,
+        onComplete: () => {
+          if (index.value >= 100) {
+            index.value = 1
+          }
+          index.value++
+        }
+      }
+    ],
+    repeat: -1,
+    stagger: 0.5
+  })
 })
 </script>
 <template>
-    <section class="section-gsap">
-        <div class="wrapper">
-            <div class="w-box">
-                <div class="row" v-for="item in 100" :key="item">张小花{{item}}</div>
-            </div>
-        </div>
-        <div>
-            <span class="button hvr-bounce-in" @click="handleStop">STOP</span>
-            <span class="button hvr-bounce-in" @click="handleStart">START</span>
-        </div>
-    </section>
+  <section class="section-gsap">
+    <div class="wrapper">
+      <div class="w-box">
+        <div class="row" v-for="item in 100" :key="item">张小花{{ item }}</div>
+      </div>
+    </div>
+    <div>
+      <span class="button hvr-bounce-in" @click="handleStop">STOP</span>
+      <span class="button hvr-bounce-in" @click="handleStart">START</span>
+    </div>
+  </section>
 </template>
 <style lang="scss">
 body {

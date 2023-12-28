@@ -1,10 +1,3 @@
-/*
- * @Author: xuyingchao
- * @Date: 2023-12-28 10:51:48
- * @LastEditors: xuyingchao
- * @LastEditTime: 2023-12-28 11:21:12
- * @Descripttion: 
- */
 /* eslint-disable */
 /* prettier-ignore */
 // @ts-nocheck

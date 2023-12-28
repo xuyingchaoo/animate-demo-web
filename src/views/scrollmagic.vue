@@ -2,7 +2,7 @@
  * @Author: xuyingchao
  * @Date: 2023-12-08 14:18:54
  * @LastEditors: xuyingchao
- * @LastEditTime: 2023-12-28 10:55:12
+ * @LastEditTime: 2023-12-28 16:33:44
  * @Descripttion: 
 -->
 <script setup lang="ts">
@@ -10,7 +10,20 @@ import * as ScrollMagic from 'scrollmagic'
 
 onMounted(() => {
   var controller = new ScrollMagic.Controller()
-  // build scene
+  // 滚动动画
+  new ScrollMagic.Scene({
+      triggerElement: "#section02",
+      triggerHook: 0.9,
+      offset: 500, // move trigger to center of element
+      reverse: true // only do once
+    })
+    .setClassToggle(".title", "visible") // add class to reveal
+    .addTo(controller);
+
+  // 固定
+  new ScrollMagic.Scene({ triggerElement: '#section02' }).setPin('#pin').addTo(controller)
+
+  
   // 无限滚动
   var scene = new ScrollMagic.Scene({ triggerElement: '#loader', triggerHook: 'onEnter' })
     .addTo(controller)
@@ -31,8 +44,7 @@ onMounted(() => {
 
   addBoxes(18)
 
-  // 固定
-  new ScrollMagic.Scene({ triggerElement: '#section01' }).setPin('#pin').addTo(controller)
+
 
   for (let i = 0; i < 4; i++) {
     console.log(i)
@@ -45,6 +57,10 @@ onMounted(() => {
 <template>
   <section class="section section01" id="section01" style="background-color: rgb(191, 211, 145)">
     <span>page one</span>
+    
+  </section>
+  <section class="section section02" id="section02" style="background-color: rgb(222, 226, 233)">
+    <span class="title">page two</span>
     <div class="guide" id="pin">
       <ul>
         <li id="guide01">page one</li>
@@ -53,9 +69,6 @@ onMounted(() => {
         <li id="guide04">page fourth</li>
       </ul>
     </div>
-  </section>
-  <section class="section section02" id="section02" style="background-color: rgb(222, 226, 233)">
-    <span>page two</span>
   </section>
   <section class="section section03" id="section03" style="background-color: rgb(30, 124, 126)">
     <span>page three</span>
@@ -119,6 +132,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   .bg {
     height: 100vh;
@@ -136,6 +150,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  background: wheat;
+  z-index: 1;
   li {
     position: relative;
     cursor: pointer;
@@ -160,5 +176,15 @@ body {
   .active {
     background: brown;
   }
+}
+
+.title {
+  opacity: 0;
+  transform: rotate(40deg) scale(0.5);
+  transition: all 0.8s ease-in-out;
+}
+.title.visible {
+  opacity: 1;
+  transform: none;
 }
 </style>

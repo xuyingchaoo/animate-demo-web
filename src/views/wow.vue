@@ -2,7 +2,7 @@
  * @Author: xuyingchao
  * @Date: 2023-12-13 10:06:40
  * @LastEditors: xuyingchao
- * @LastEditTime: 2023-12-27 16:31:32
+ * @LastEditTime: 2023-12-28 15:07:28
  * @Descripttion: 
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ onMounted(() => {
 <template>
     <div class="content0">
         <div class="text">
-            <div class="wow fadeInUp">W</div>
+            <div class="wow flip">W</div>
             <div class="wow fadeInUp" data-wow-delay="0.2s">O</div>
             <div class="wow fadeInUp" data-wow-delay="0.3s">W</div>
             <div>&nbsp;</div>

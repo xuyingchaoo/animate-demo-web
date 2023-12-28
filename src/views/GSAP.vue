@@ -2,13 +2,11 @@
  * @Author: xuyingchao
  * @Date: 2023-12-26 15:42:31
  * @LastEditors: xuyingchao
- * @LastEditTime: 2023-12-28 11:10:55
+ * @LastEditTime: 2023-12-28 15:59:51
  * @Descripttion: 
 -->
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
 const dom = document.getElementsByClassName('row')
 const tl = gsap.timeline()
 const tween = ref()
